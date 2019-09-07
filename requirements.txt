@@ -3,7 +3,7 @@ attrs==19.1.0
 Automat==0.7.0
 cffi==1.12.3
 constantly==15.1.0
-cryptography==1.9
+cryptography==2.7
 cssselect==1.1.0
 entrypoints==0.3
 envparse==0.2.0
@@ -29,6 +29,7 @@ PyHamcrest==1.9.0
 pyOpenSSL==17.2.0
 python-dateutil==2.8.0
 queuelib==1.5.0
+schedule==0.6.0
 Scrapy==1.4.0
 scrapy-rss==0.1.7
 service-identity==18.1.0

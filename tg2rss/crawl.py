@@ -3,6 +3,10 @@ from scrapy.crawler import CrawlerProcess
 
 from spiders.pmdaily import PmdailySpider
 
+__all__ = [
+    'crawl',
+]
+
 env.read_envfile()
 
 settings = dict(  # settings are here to fail at import time
