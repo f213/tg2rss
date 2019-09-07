@@ -14,6 +14,7 @@ settings = dict(  # settings are here to fail at import time
     FEED_DESCRIPTION=env('FEED_DESCRIPTION', cast=str),
     FEED_LINK=env('FEED_LINK', cast=str),
     LOG_LEVEL=env('LOG_LEVEL', cast=str, default='ERROR'),
+    IGNORE_TITLES=env('IGNORE_TITLES', cast=list, subcast=str, default=[]),
 )
 
 

@@ -17,9 +17,14 @@ class PmdailySpider(scrapy.Spider):
     ]
 
     def parse(self, response):
+        titles_to_ignore = [title.lower() for title in self.settings['IGNORE_TITLES']]
+
         for item in response.css('.tgme_widget_message'):
             post = Post(item)
             if post.title is None or len(post.title) < 3:
+                continue
+
+            if post.title.lower() in titles_to_ignore:
                 continue
 
             item = RssItem()
