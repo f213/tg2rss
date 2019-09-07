@@ -3,7 +3,7 @@ from hashlib import sha256
 from typing import Optional
 
 import scrapy
-from scrapy_rss_exporter.items import Enclosure, RssItem
+from scrapy_rss import RssItem
 
 
 class BasicSpider(scrapy.Spider):
@@ -22,14 +22,15 @@ class BasicSpider(scrapy.Spider):
             if post.title is None or len(post.title) < 3:
                 continue
 
-            yield RssItem(
-                title=post.title,
-                link=post.link,
-                guid=post.id,
-                description=post.text,
-                pub_date=None,
-                enclosure=[Enclosure(url=post.img, type='image/jpeg')] if post.img is not None else [],
-            )
+            item = RssItem()
+            item.link = post.link
+            item.title = post.title
+            item.description = post.text
+            item.guid = post.id
+            if post.img is not None:
+                item.enclosure = dict(url=post.img, type='image/jpeg')
+
+            yield item
 
 
 class Post:

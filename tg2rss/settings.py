@@ -64,9 +64,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'tg2rss.pipelines.Tg2RssPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'scrapy_rss.pipelines.RssExportPipeline': 900,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -90,11 +90,9 @@ HTTPCACHE_IGNORE_HTTP_CODES = []
 HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 
-# export this stuff to the feed
+# export all this stuff to the feed
 
-FEED_EXPORTERS = {
-    'rss': 'scrapy_rss_exporter.exporters.RssItemExporter'
-}
-
-FEED_FORMAT = 'rss'
-FEED_URI = '/tmp/feed.rss'
+FEED_FILE = '/tmp/feed.rss'
+FEED_TITLE = 't.me/@pmdaily RSS feed'
+FEED_DESCRIPTION = ''
+FEED_LINK = 'https://borshev.com/rss/tg/'
