@@ -12,7 +12,7 @@ def _crawl():
 
 
 if __name__ == '__main__':
-    schedule.every().minute.do(_crawl)
+    schedule.every().hour.do(_crawl)
 
     while True:
         schedule.run_pending()
