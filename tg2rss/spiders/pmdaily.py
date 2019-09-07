@@ -6,8 +6,8 @@ import scrapy
 from scrapy_rss import RssItem
 
 
-class BasicSpider(scrapy.Spider):
-    name = 'basic'
+class PmdailySpider(scrapy.Spider):
+    name = 'pmdaily'
     allowed_domains = [
         't.me',
     ]
