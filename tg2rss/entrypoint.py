@@ -12,6 +12,8 @@ def _crawl():
 
 
 if __name__ == '__main__':
+    _crawl()  # do crawling at the first run
+
     schedule.every().hour.do(_crawl)
 
     while True:
