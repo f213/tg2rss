@@ -8,7 +8,6 @@ from crawl import crawl
 def _crawl():
     print('Running crawling...')  # noqa
     crawl()
-    print('Crawling done!')  # noqa
 
 
 if __name__ == '__main__':
