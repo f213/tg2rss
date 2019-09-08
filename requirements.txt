@@ -26,7 +26,7 @@ pycparser==2.19
 PyDispatcher==2.0.5
 pyflakes==2.1.1
 PyHamcrest==1.9.0
-pyOpenSSL==17.2.0
+pyOpenSSL==17.5.0
 python-dateutil==2.8.0
 queuelib==1.5.0
 schedule==0.6.0
