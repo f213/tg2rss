@@ -1,13 +1,12 @@
 import time
+from os import system
 
 import schedule
 
-from crawl import crawl
-
 
 def _crawl():
-    print('Running crawling...')  # noqa
-    crawl()
+    print('Running crawl')
+    system('python crawl.py')
 
 
 if __name__ == '__main__':

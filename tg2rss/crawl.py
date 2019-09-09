@@ -25,7 +25,7 @@ settings = dict(  # settings are here to fail at import time
 def crawl():
     crawler = CrawlerProcess(settings)
     crawler.crawl(PmdailySpider)
-    crawler.start(stop_after_crawl=False)
+    crawler.start()
 
 
 if __name__ == '__main__':
