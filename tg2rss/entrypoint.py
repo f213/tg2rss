@@ -1,12 +1,14 @@
 import time
-from os import system
+from os import path, system
 
 import schedule
 
 
 def _crawl():
-    print('Running crawl')
-    system('python crawl.py')
+    print('Running crawl')  # noqa
+    crawler_path = path.join(path.dirname(__file__), 'crawl.py')
+
+    system(f'python {crawler_path}')
 
 
 if __name__ == '__main__':
