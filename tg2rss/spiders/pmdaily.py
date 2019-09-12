@@ -3,7 +3,15 @@ from hashlib import sha256
 from typing import Optional
 
 import scrapy
-from scrapy_rss import RssItem
+from scrapy import Field, Item
+
+
+class PostItem(Item):
+    link = Field()
+    title = Field()
+    description = Field()
+    guid = Field()
+    enclosure = Field()
 
 
 class PmdailySpider(scrapy.Spider):
@@ -27,13 +35,14 @@ class PmdailySpider(scrapy.Spider):
             if post.title.lower() in titles_to_ignore:
                 continue
 
-            item = RssItem()
-            item.link = post.link
-            item.title = post.title
-            item.description = post.text
-            item.guid = post.id
+            item = PostItem(
+                link=post.link,
+                title=post.title,
+                description=post.text,
+                guid=post.id,
+            )
             if post.img is not None:
-                item.enclosure = dict(url=post.img, type='image/jpeg')
+                item['enclosure'] = dict(url=post.img, type='image/jpeg')
 
             yield item
 
@@ -81,7 +90,7 @@ class Post:
         if paragraphs[0] == self.title:
             del paragraphs[0]
 
-        return "\n\n".join(paragraphs)
+        return self.htmlize("\n".join(paragraphs))
 
     @property
     def paragraphs(self) -> str:
@@ -93,3 +102,7 @@ class Post:
     @staticmethod
     def strip_tags(line):
         return re.sub(r'<[^<>]+>', '', line)
+
+    @staticmethod
+    def htmlize(text):
+        return text.replace('\n', '<br/>')

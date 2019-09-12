@@ -11,7 +11,7 @@ env.read_envfile()
 
 settings = dict(  # settings are here to fail at import time
     ITEM_PIPELINES={
-        'scrapy_rss.pipelines.RssExportPipeline': 900,
+        'pipelines.RSSPipeline': 900,
     },
     FEED_FILE=env('FEED_FILE', cast=str),
     FEED_TITLE=env('FEED_TITLE', cast=str),
