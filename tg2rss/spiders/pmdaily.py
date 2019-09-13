@@ -1,4 +1,5 @@
 import re
+from curses.ascii import isprint
 from hashlib import sha256
 from typing import Optional
 
@@ -53,13 +54,13 @@ class Post:
 
     @property
     def _title(self):
-        return self.post.css('.tgme_widget_message_text b:first-child')
+        return self.post.css('.tgme_widget_message_text b')
 
     @property
     def title(self) -> Optional[str]:
         """First bold line of the text"""
         title = self._title.css('::text').extract_first()
-        if title is not None and len(title) >= 3:
+        if title is not None and len(title) > 3:
             return title
 
     @property
@@ -101,6 +102,7 @@ class Post:
 
     @staticmethod
     def strip_tags(line):
+        line = line.replace('\u200b', '')  # remove zero-width space
         return re.sub(r'<[^<>]+>', '', line)
 
     @staticmethod
