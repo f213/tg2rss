@@ -19,6 +19,8 @@ class RSSPipeline:
         entry.link(href=item['link'])
         entry.description('')
         entry.content(item['description'], type='CDATA')
+        if item.get('enclosure'):
+            entry.enclosure(**item['enclosure'], length='100500')
 
     def get_feed(self):
         feed = FeedGenerator()
