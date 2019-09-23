@@ -91,7 +91,7 @@ class Post:
         if paragraphs[0] == self.title:
             del paragraphs[0]
 
-        return self.htmlize("\n".join(paragraphs))
+        return "\n".join(['<p>{}</p>'.format(paragraph) for paragraph in paragraphs])
 
     @property
     def paragraphs(self) -> str:
@@ -104,7 +104,3 @@ class Post:
     def strip_tags(line):
         line = line.replace('\u200b', '')  # remove zero-width space
         return re.sub(r'<[^<>]+>', '', line)
-
-    @staticmethod
-    def htmlize(text):
-        return text.replace('\n', '<br/>')
